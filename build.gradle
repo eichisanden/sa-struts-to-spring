@@ -1,0 +1,20 @@
+plugins {
+    id 'java'
+    id 'war'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    maven { url "https://www.seasar.org/maven/maven2/" }
+}
+
+dependencies {
+    implementation 'org.seasar.sastruts:sa-struts:1.0.4-sp9'
+
+    testImplementation group: 'junit', name: 'junit', version: '4.12'
+}
