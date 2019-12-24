@@ -1,6 +1,8 @@
 plugins {
     id 'java'
     id 'war'
+    id 'org.springframework.boot' version '2.2.2.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
 }
 
 group 'org.example'
@@ -15,6 +17,13 @@ repositories {
 
 dependencies {
     implementation 'org.seasar.sastruts:sa-struts:1.0.4-sp9'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+}
 
-    testImplementation group: 'junit', name: 'junit', version: '4.12'
+test {
+    useJUnitPlatform()
 }
