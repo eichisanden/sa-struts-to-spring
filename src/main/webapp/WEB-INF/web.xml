@@ -71,7 +71,7 @@
         <url-pattern>/*</url-pattern>
         <dispatcher>REQUEST</dispatcher>
     </filter-mapping>
-    
+<!--
     <filter-mapping>
         <filter-name>requestDumpFilter</filter-name>
         <url-pattern>*.do</url-pattern>
@@ -80,7 +80,7 @@
         <dispatcher>INCLUDE</dispatcher>
         <dispatcher>ERROR</dispatcher>
     </filter-mapping>
-    
+-->
     <servlet>
         <servlet-name>action</servlet-name>
         <servlet-class>org.apache.struts.action.ActionServlet</servlet-class>
@@ -98,6 +98,10 @@
     <servlet>
         <servlet-name>s2container</servlet-name>
         <servlet-class>org.seasar.framework.container.servlet.S2ContainerServlet</servlet-class>
+        <init-param>
+            <param-name>debug</param-name>
+            <param-value>true</param-value>
+        </init-param>
         <load-on-startup>2</load-on-startup>
     </servlet>
     

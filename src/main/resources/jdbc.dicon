@@ -72,19 +72,17 @@
 	-->
 	
 	<!-- for PostgreSQL -->
-	<!--
 	<component name="xaDataSource"
 		class="org.seasar.extension.dbcp.impl.XADataSourceImpl">
 		<property name="driverClassName">
 			"org.postgresql.Driver"
         </property>
         <property name="URL">
-          "jdbc:postgresql://localhost/TEST"
+          "jdbc:postgresql://localhost:5432/postgres"
         </property>
-        <property name="user">"xxxx"</property>
-        <property name="password">"xxxx"</property>
+        <property name="user">"postgres"</property>
+        <property name="password">"postgres"</property>
     </component>
-    -->
 
 	<!-- MySQL
 	- MySQL4.0以下でマルチバイト文字を扱う場合には，URL指定の後に，
@@ -139,19 +137,18 @@
         <property name="password">"xxxx"</property>
     </component>
 	-->
-	<!--
+
 	<component name="connectionPool"
 		class="org.seasar.extension.dbcp.impl.ConnectionPoolImpl">
 		<property name="timeout">600</property>
 		<property name="maxPoolSize">10</property>
-		<property name="allowLocalTx">true</property>
+		<property name="allowLocalTx">false</property>
 		<destroyMethod name="close"/>
 	</component>
 
 	<component name="DataSource"
 		class="org.seasar.extension.dbcp.impl.DataSourceImpl"
 	/>
-	-->
 
 	<!-- from JNDI -->
 	<!--
