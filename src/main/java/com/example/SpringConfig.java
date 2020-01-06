@@ -8,8 +8,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
-import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.interceptor.MatchAlwaysTransactionAttributeSource;
 import org.springframework.transaction.interceptor.RollbackRuleAttribute;
 import org.springframework.transaction.interceptor.RuleBasedTransactionAttribute;
@@ -21,6 +21,7 @@ import java.util.Collections;
 
 @Configuration
 @EnableWebMvc
+@EnableTransactionManagement
 @ComponentScan(value = "com.example")
 public class SpringConfig {
     @Bean
@@ -44,8 +45,9 @@ public class SpringConfig {
     private static final int TX_METHOD_TIMEOUT = 3;
     private static final String AOP_POINTCUT_EXPRESSION = "execution(* com.example.service..*.*(..))";
 
-    private PlatformTransactionManager transactionManager() {
-        return new DataSourceTransactionManager(dataSource());
+    @Bean
+    public PlatformTransactionManager transactionManager() {
+        return new MyDataSourceTransactionManager(dataSource());
     }
 
     @Bean
